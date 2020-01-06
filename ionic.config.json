@@ -1,5 +1,7 @@
 {
   "name": "foodapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

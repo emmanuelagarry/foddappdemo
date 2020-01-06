@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Search Resturants
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-searchbar
+    (ionChange)="searchSubject$.next($event.target.value)"
+  ></ion-searchbar>
+
+  <ion-list>
+    <ion-item
+      *ngFor="let item of itemsToShow$ | async; trackBy: trackByFn"
+      [routerLink]="['/foods', {category: item}]"
+    >
+      <p>{{ item }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

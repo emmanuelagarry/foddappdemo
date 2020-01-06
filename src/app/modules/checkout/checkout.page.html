@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Checkout</ion-title>
+
+    <ion-button
+      fill="outline"
+      size="small"
+      slot="end"
+      color="danger"
+      (click)="clearCart()"
+      >Clear Cart</ion-button
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of cart$ | async">
+      <ion-thumbnail>
+        <img [src]="item.img" />
+      </ion-thumbnail>
+      <h6>&nbsp; {{item.name}} &nbsp;</h6>
+      <h6>&nbsp; &#8358;{{item.price}}</h6>
+      <h6>
+        <ion-button
+          slot="end"
+          fill="clear"
+          color="dark"
+          (click)="removeItem(item.key)"
+        >
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </h6>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-tab-bar>
+    <ion-button size="small" color="success" (click)="presentToast()">
+      Make Payment
+    </ion-button>
+  </ion-tab-bar>
+</ion-footer>

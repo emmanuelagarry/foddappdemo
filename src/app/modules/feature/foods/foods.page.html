@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Foods</ion-title>
+
+    <ion-button color="dark" slot="end" fill="clear" routerLink="/checkout">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ng-container *ngIf=" food$ | async as food;">
+      <ng-container *ngIf="food.length > 0; else elseBlock">
+        <ion-item *ngFor="let item of food">
+          <ion-card>
+            <img [src]="item.img" alt="" />
+            <ion-card-header>
+              <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+              <br />
+              <ion-card-subtitle>
+                <span> &#8358;{{item.price}} </span>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button color="dark" fill="outline" (click)="addTocart(item)">
+                add to cart
+                <ion-icon name="cart"></ion-icon>
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ng-container>
+
+      <ng-template #elseBlock>
+        <ion-card>
+          <ion-card-content>
+            Items is currently unavailable
+          </ion-card-content>
+        </ion-card>
+      </ng-template>
+    </ng-container>
+  </ion-list>
+</ion-content>
