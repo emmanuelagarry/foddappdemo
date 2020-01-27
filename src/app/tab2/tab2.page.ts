@@ -11,6 +11,13 @@ export class Tab2Page {
   searchSubject$ = new BehaviorSubject('')
 
   categories = [
+    'Business  Class Breakfast',
+    'Business Class Lunch',
+    'Vegetarian Meals',
+    'Special Needs Meals',
+    'Snack Tray',
+    'Economy Meals',
+    'Economy Snack Box',
     'Pizza',
     'Fast Food',
     'Burgers',

@@ -14,8 +14,8 @@ export class CartStore {
   constructor() {}
 
   addToCart(item: CartItem) {
-    item.key = new Date().getTime()
-    this.cart = [...this.cart, item]
+    const key = new Date().getTime()
+    this.cart = [...this.cart, { ...item, key }]
     this.cartSubject$.next(this.cart)
   }
 

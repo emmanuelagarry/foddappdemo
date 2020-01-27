@@ -20,6 +20,90 @@ export class FoodsPage implements OnInit {
 
   private food = [
     {
+      name: 'Bread Flambe',
+      category: 'Business  Class Breakfast',
+      img: `https://images.unsplash.com/photo-1499028344343-cd173ffc68a9?ixlib=rb-1.2.1&ixid
+      =eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 55,
+    },
+    {
+      name: 'Yeast Flake',
+      category: 'Business Class Lunch',
+      img: `https://images.unsplash.com/photo-1504712598893-24159a89200e?ixlib=rb-1.2.1&ixid=
+      eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 67,
+    },
+    {
+      name: 'Veg Cake',
+      category: 'Special Needs Meals',
+      img: `https://images.unsplash.com/photo-1473093226795-af9932fe5856?ixlib=
+      rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 98,
+    },
+    {
+      name: 'Big Briggs',
+      category: 'Snack Tray',
+      img: `https://images.unsplash.com/photo-1496116218417-1a781b1c416c?ixlib=rb-1.2.1&ixid=
+      eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 20,
+    },
+    {
+      name: 'Big Shack',
+      category: 'Economy Meals',
+      img: `https://images.unsplash.com/photo-1551504734-b464946bb7f3?ixlib=rb-1.2.1&ixid
+      =eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 71,
+    },
+    {
+      name: 'Chicken Crisp',
+      category: 'Economy Snack Box',
+      img: `https://images.unsplash.com/photo-1496412705862-e0088f16f791?ixlib=
+      rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 8,
+    },
+    {
+      name: 'Otodom Stew',
+      category: 'Business  Class Breakfast',
+      img: `https://images.unsplash.com/reserve/oMRKkMc4RSq7N91OZl0O_IMG_8309.jpg?ixlib=rb-1.2.1&ixid
+      =eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 41,
+    },
+    {
+      name: 'Mayose Payose',
+      category: 'Business Class Lunch',
+      img: `https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=
+      eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 0,
+    },
+    {
+      name: 'Banana Flambe',
+      category: 'Vegetarian Meals',
+      img: `https://images.unsplash.com/photo-1504113888839-1c8eb50233d3?ixlib=rb-1.2.1&ixid
+      =eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 80,
+    },
+    {
+      name: 'Twermp Twamp',
+      category: 'Special Needs Meals',
+      img: `https://images.unsplash.com/photo-1450862479751-84eeaf2fcca4?ixlib=rb-1.2.1&ixid=
+      eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 9,
+    },
+    {
+      name: 'Cheasy Nuts',
+      category: 'Snack Tray',
+      img: `https://images.unsplash.com/photo-1563076429-c04cbe68da3a?ixlib=rb-1.2.1&ixid=
+      eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 8,
+    },
+    {
+      name: 'Brigsymol',
+      category: 'Economy Meals',
+      img: `https://images.unsplash.com/photo-1484654815877-4677f5cade22?ixlib=rb-1.2.1&ixid=
+      eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+      price: 27,
+    },
+    {
       name: 'Peperoni Pizza',
       category: 'Pizza',
       img: `https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?ixlib=rb-1.2.1&ixid
@@ -52,8 +136,6 @@ export class FoodsPage implements OnInit {
   food$: Observable<any>
 
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot.paramMap.get('category'))
-
     this.food$ = of(this.food).pipe(
       map(items => {
         const category = this.activatedRoute.snapshot.paramMap.get('category')

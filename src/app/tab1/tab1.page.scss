@@ -1,19 +1,52 @@
 .welcome-card img {
   max-height: 35vh;
+  object-fit: cover;
   overflow: hidden;
 }
 
+mat-expansion-panel {
+  width: 98%;
+  margin: auto;
+}
+
 .horizontal-card {
-  // width: 350px !important;
-  // height: 200px !important;
+  // max-height: 35vh;
+}
+.horizontal-card img {
+  // max-width: 300px;
+  // margin: auto;
+  object-fit: cover;
 }
 
-.back-span {
-  background-color: lightgray;
-  padding: 3px;
-  margin-right: 3px;
+.accordion_content {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-h6 {
-  text-align: center;
+.food_card {
+  width: 300px;
+  height: 420px;
+}
+
+.cdk-virtual-scroll-data-source-example .example-viewport {
+  height: 200px;
+  width: 500px;
+  border: 1px solid black;
+}
+
+// .horizontal-card {
+//   width: 300px;
+// }
+
+.mat-action-row {
+  justify-content: space-between;
+}
+
+ion-select .select-placeholder {
+  opacity: 0 !important;
+}
+
+ion-slides {
+  --bullet-background: black;
+  // --bullet-background-active: blue;
 }

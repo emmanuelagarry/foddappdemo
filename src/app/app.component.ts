@@ -23,24 +23,24 @@ export class AppComponent {
         // match.$route - the route we matched, which is the matched entry from the arguments to route()
         // match.$args - the args passed in the link
         // match.$link - the full link data
-        console.log('Successfully matched route', match)
+        // console.log('Successfully matched route', match)
       },
       nomatch => {
         // nomatch.$link - the full link data
-        console.error('Got a deeplink that did not match', nomatch)
+        // console.error('Got a deeplink that did not match', nomatch)
       }
     )
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)')
 
-    toggleDarkTheme(prefersDark.matches)
+    // toggleDarkTheme(prefersDark.matches)
 
-    // Listen for changes to the prefers-color-scheme media query
-    prefersDark.addListener(mediaQuery => toggleDarkTheme(mediaQuery.matches))
+    // // Listen for changes to the prefers-color-scheme media query
+    // prefersDark.addListener(mediaQuery => toggleDarkTheme(mediaQuery.matches))
 
-    // Add or remove the "dark" class based on if the media query matches
-    function toggleDarkTheme(shouldAdd) {
-      document.body.classList.toggle('dark', shouldAdd)
-    }
+    // // Add or remove the "dark" class based on if the media query matches
+    // function toggleDarkTheme(shouldAdd) {
+    //   document.body.classList.toggle('dark', shouldAdd)
+    // }
 
     this.initializeApp()
   }

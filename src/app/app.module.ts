@@ -1,3 +1,4 @@
+import { ProductFacade } from './../facade/facade.products'
 import { CartStore } from './../store/store.cart'
 import { CartFacade } from './../facade/facade.store'
 import { NgModule } from '@angular/core'
@@ -41,6 +42,7 @@ import { environment } from 'src/environments/environment'
     CartFacade,
     CartStore,
     Deeplinks,
+    ProductFacade,
   ],
   bootstrap: [AppComponent],
 })

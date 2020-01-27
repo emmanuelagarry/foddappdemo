@@ -20,7 +20,10 @@
   <ion-list>
     <ion-item *ngFor="let item of cart$ | async">
       <ion-thumbnail>
-        <img [src]="item.img" />
+        <!-- <img [src]="item.img" /> -->
+        <img
+          src="http://www.clker.com/cliparts/0/4/6/1/11949904011525963418file_broken.svg.med.png"
+        />
       </ion-thumbnail>
       <h6>&nbsp; {{item.name}} &nbsp;</h6>
       <h6>&nbsp; &#8358;{{item.price}}</h6>
@@ -40,7 +43,7 @@
 
 <ion-footer>
   <ion-tab-bar>
-    <ion-button size="small" color="success" (click)="presentToast()">
+    <ion-button size="small" color="primary" (click)="presentToast()">
       Make Payment
     </ion-button>
   </ion-tab-bar>

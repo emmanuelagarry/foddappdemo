@@ -1,8 +1,12 @@
+import { Observable, BehaviorSubject } from 'rxjs'
+import { ProductFacade } from './../../facade/facade.products'
 import { ToastController } from '@ionic/angular'
 import { FoodService } from './../services/food/food.service'
 import { Component, OnInit } from '@angular/core'
 import { CartItem } from 'src/models/model.cartitem'
 import { CartFacade } from 'src/facade/facade.store'
+import { Product } from 'src/models/model.product'
+import { map } from 'rxjs/operators'
 
 @Component({
   selector: 'app-tab1',
@@ -10,87 +14,53 @@ import { CartFacade } from 'src/facade/facade.store'
   styleUrls: ['tab1.page.scss'],
 })
 export class Tab1Page implements OnInit {
-  items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`)
   slideOpts = {
     initialSlide: 1,
-    spaceBetween: 10,
+    speed: 400,
     centeredSlides: true,
-    slidesPerView: 1.8,
+    slidesPerView: 1.5,
   }
 
-  featuredProd = [
-    {
-      img: `https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib
-      =rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
-
-      rating: 4.4,
-
-      name: 'Prito panta',
-      price: 500,
+  slideOptsCarousel = {
+    autoplay: {
+      delay: 5000,
     },
+  }
 
-    {
-      img: `https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=
-      rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
+  customSelect: any = {
+    translucent: false,
+  }
 
-      rating: 4.4,
+  product$: Observable<{
+    economyBreakFast: Product[]
+    economyLunch: Product[]
+    businessBreakFast: Product[]
+    businessLunch: Product[]
+  }>
 
-      name: 'Silka solvo',
-      price: 500,
-    },
+  cartCount$: Observable<number>
 
-    {
-      img: `https://images.unsplash.com/photo-1532980400857-e8d9d275d858?ixlib=
-      rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
-
-      rating: 4.4,
-
-      name: 'Rice mix',
-      price: 500,
-    },
+  carousel = [
+    // tslint:disable-next-line:max-line-length
+    `https://firebasestorage.googleapis.com/v0/b/foodapjj-prod.appspot.com/o/carousel%2F1browser.jpg?alt=media&token=d02ef39a-ad1d-4417-abd2-c8ad3132ed68`,
+    // tslint:disable-next-line:max-line-length
+    `https://firebasestorage.googleapis.com/v0/b/foodapjj-prod.appspot.com/o/carousel%2F2browser.jpg?alt=media&token=722a6cd2-42c3-4f80-860b-7f142a24a5b9`,
   ]
 
-  specialOffers = [
-    {
-      img: `https://images.unsplash.com/photo-1481931098730-318b6f776db0?ixlib=
-      rb-1.2.1&auto=format&fit=crop&w=500&q=60`,
-
-      rating: 4.4,
-
-      name: 'Spag',
-      price: 500,
-    },
-
-    {
-      img: `https://images.unsplash.com/photo-1514516870926-20598973e480?ixlib=
-      rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
-
-      rating: 4.4,
-
-      name: 'Soothe',
-      price: 500,
-    },
-
-    {
-      img: `https://images.unsplash.com/photo-1514537099923-4c0fc7c73161?ixlib=
-      rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60`,
-
-      rating: 4.4,
-
-      name: 'Vegetable mix',
-      price: 500,
-    },
-  ]
+  carouselSubject: BehaviorSubject<number> = new BehaviorSubject(1)
 
   constructor(
     private cartFacade: CartFacade,
+    private productFacade: ProductFacade,
     private toastController: ToastController
-  ) {
-    // this.featuredProd[0].img.replace(/\s/g,'')
-  }
+  ) {}
 
+  items = Array.from({ length: 6 }).map((_, i) => `Item #${i}`)
   ngOnInit() {
-    // this.foodService.getFood().subscribe(items => console.log(items))
+    this.product$ = this.productFacade.products$
+    this.cartCount$ = this.cartFacade.cartState$.pipe(
+      map(items => items.length)
+    )
   }
 
   async addTocart(item: CartItem) {
@@ -100,5 +70,22 @@ export class Tab1Page implements OnInit {
       duration: 800,
     })
     toast.present()
+  }
+
+  logt() {
+    console.log('this')
+  }
+
+  changeBusinessBf(select: string) {
+    this.productFacade.changeBusBf(select)
+  }
+  changeBusinessL(select: string) {
+    this.productFacade.changeBusL(select)
+  }
+  changeEconomyBf(select: string) {
+    this.productFacade.changeEcBf(select)
+  }
+  changeEconomyL(select: string) {
+    this.productFacade.changeEcL(select)
   }
 }

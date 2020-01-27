@@ -4,16 +4,16 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { Tab1Page } from './tab1.page'
+import { MatExpansionModule } from '@angular/material/expansion'
 import { ScrollingModule } from '@angular/cdk/scrolling'
-import { MatCardModule } from '@angular/material/card'
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    MatExpansionModule,
     ScrollingModule,
-    MatCardModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }]),
   ],
   declarations: [Tab1Page],

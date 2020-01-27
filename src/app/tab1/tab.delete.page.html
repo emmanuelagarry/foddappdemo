@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+    <ion-button slot="end" fill="clear" color="dark" routerLink="/checkout">
+      <ion-icon name="cart"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+    <img
+      src="https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+      alt=""
+    />
+    <ion-card-header>
+      <ion-card-subtitle>Chop Life</ion-card-subtitle>
+      <ion-card-title>Welcome To Foody</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>
+        Now that your app has been created, you'll want to start building out
+        features and components.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <br />
+
+  <h6>Featured Products</h6>
+  <ion-slides [options]="slideOpts">
+    <br />
+    <ion-slide *ngFor="let item of featuredProd">
+      <ion-card class="horizontal-card">
+        <img [src]="item.img" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+          <br />
+          <ion-card-subtitle
+            ><span class="back-span"> &#8358;{{item.price}} </span>
+            <span class="back-span"
+              >{{item.rating}} <ion-icon name="star"></ion-icon></span
+          ></ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-button color="dark" fill="outline" (click)="addTocart(item)">
+            add to cart
+            <ion-icon name="cart"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <br />
+  <h6>Special Offers</h6>
+  <ion-slides [options]="slideOpts">
+    <br />
+    <ion-slide *ngFor="let item of specialOffers">
+      <ion-card class="horizontal-card">
+        <img [src]="item.img" alt="" />
+        <ion-card-header>
+          <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+          <br />
+          <ion-card-subtitle
+            ><span class="back-span"> &#8358;{{item.price}} </span>
+            <span class="back-span"
+              >{{item.rating}} <ion-icon name="star"></ion-icon></span
+          ></ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button color="dark" fill="outline" (click)="addTocart(item)">
+            add to cart
+            <ion-icon name="cart"></ion-icon>
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
